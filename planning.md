@@ -65,12 +65,54 @@ So I think I will do this as a grid with Navbar, Shop and Cart, where Cart only 
 
 ```txt
 +---------------------------------------------------+-------+
-|           NAVBAR                                  | CART  |
+| HOME  SHOP                                        | CART  |
 +---------------------------------------------------|       |
-|           SHOP                                    |       |
+|               (SHOP)                              |       |
 |                                                   |       |
 | ITEM      ITEM      ITEM      ITEM                |       |
 |                                                   |       |
 |                                                   |       |
 ```
 
+Each Item:
+
+Example data...
+
+- title: Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops
+- price: $109.95
+- image: [image](https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg)
+
+```txt
++-------------------------------+
+|                               |
+|         IMAGE                 |
+|                               |
+| $100.00                       |
+|                               |
+| TITLE                         |
+|        +------------------+   |
+| QTY:   |  🛒Add to Cart  |   |
+| - 1 +  |                  |   |
+|        +------------------+   |
+|                               |
++-------------------------------+
+```
+
+## Steps
+
+- DONE Research shopping cart designs and decide initial design
+- DONE home `/` and `shop` routes, `<Navbar />` navigates to each
+- DONE localStorage for API request and error handling
+- `<Shop />`
+  - DONE list of products from API
+  - Show set of product cards
+- **Shop item `<Card />`**
+- `<Cart />` sidebar shows list of products
+- Basic home page on `<App />`
+- Layout using Grid or Flexbox
+- Styling
+- Deploy
+
+## Issues
+
+- Having the Shop component load data means each time user navigates from Home to Shop, has to re-query the API. Would prefer to have the data load on first visit to home page, cache it, and then display shop immediately?
