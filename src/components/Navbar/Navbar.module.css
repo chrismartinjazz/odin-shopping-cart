@@ -1,0 +1,11 @@
+.Navbar {
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.Navlink {
+  text-decoration: none;
+  color: black;
+}

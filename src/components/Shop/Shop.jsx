@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { requestData } from "../../request-data.js";
-import Navbar from "../Navbar/Navbar.jsx"
+import Card from "../Card/Card.jsx";
 
 export default function Shop() {
   const [products, setProducts] = useState(null);
@@ -25,12 +25,11 @@ export default function Shop() {
 
   return (
     <>
-      <Navbar />
       <h2>Shop</h2>
       {products.map((product) => {
         return (
           <div key={product.id}>
-            {product.title}
+            <Card product={product} />
           </div>
         )
       })}
