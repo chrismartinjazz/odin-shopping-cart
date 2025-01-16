@@ -1,0 +1,11 @@
+.main {
+  display: flex;
+}
+
+.Shop {
+  width: 100%;
+}
+
+.Cart {
+  width: 5em;
+}

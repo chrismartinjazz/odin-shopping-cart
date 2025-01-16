@@ -1,0 +1,9 @@
+.Cart {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  max-width: 5em;
+}
+.image {
+  width: 100%;
+}

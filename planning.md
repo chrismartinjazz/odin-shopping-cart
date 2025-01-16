@@ -78,6 +78,7 @@ Each Item:
 
 Example data...
 
+- id: 1
 - title: Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops
 - price: $109.95
 - image: [image](https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg)
@@ -105,9 +106,10 @@ Example data...
 - DONE localStorage for API request and error handling
 - `<Shop />`
   - DONE list of products from API
-  - Show set of product cards
-- **Shop item `<Card />`**
-- `<Cart />` sidebar shows list of products
+  - DONE Show set of product cards
+- DONE Shop item `<Card />`
+- DONE Add `cart` to state
+- `<Cart />` sidebar shows list of products in Cart
 - Basic home page on `<App />`
 - Layout using Grid or Flexbox
 - Styling
