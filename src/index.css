@@ -1,3 +1,29 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/*
+Color combination from
+https://www.canva.com/colors/color-palettes/tangerine-trend/
+*/
+
+:root {
+  --font1: 'Montserrat', sans-serif;
+  --font2: 'DM Serif Display', serif;
+  --color-dark: #002134;
+  --color-light: #C8C4C1;
+  --color-contrast: #FFB067;
+  --color-mid: #8BA3A8;
+}
+
 img {
   width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font1);
+  font-size: 1.125rem;
+  line-height: 1.5rem;
 }

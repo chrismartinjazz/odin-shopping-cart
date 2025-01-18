@@ -1,8 +1,12 @@
 .Card {
-  max-width: 15em;
+  width: 15em;
   padding: 1em;
+  border: solid red 1px;
 }
 
 .image {
   width: 100%;
+  height: 20em;
+  object-fit: contain;
+  border: solid green 1px;
 }

@@ -53,9 +53,8 @@ export default function Shop() {
   return (
     <>
       <Navbar className={styles.Navbar} cart={cart}/>
-      <div className={styles.main}>
+      <div className={styles.container}>
         <div className={styles.Shop}>
-          <h2>Shop</h2>
           {products.map((product) => {
             return (
               <div key={product.id}>

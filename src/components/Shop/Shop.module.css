@@ -1,11 +1,14 @@
-.main {
+.container {
+  width: 90%;
+  max-width: 1600px;
+  margin: 0 auto;
   display: flex;
+  border: solid purple 1px;
 }
 
 .Shop {
-  width: 100%;
-}
-
-.Cart {
-  width: 5em;
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
 }

@@ -1,7 +1,12 @@
 .Navbar {
-  height: 2em;
+  width: 100%;
+  background-color: var(--color-mid);
   display: flex;
   justify-content: center;
+  align-items: center;
+  font-family: var(--font2);
+  font-size: 1.5rem;
+  height: 2em;
   gap: 1em;
 }
 

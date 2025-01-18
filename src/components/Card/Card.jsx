@@ -19,10 +19,12 @@ function Card({ product, productIsInCart, handleUpdateCart, handleRemoveFromCart
   const [quantity, setQuantity] = useState(1);
 
   function handleChangeQuantity(event) {
-    const nextQuantity = event.target.value > 1
-      ? event.target.value
-      : 1
-    setQuantity(nextQuantity);
+    if (isPositiveInteger(event.target.value)) {
+      const nextQuantity = event.target.value > 1
+        ? event.target.value
+        : 1
+      setQuantity(nextQuantity);
+    }
   }
 
   function handleToggleEdit() {
@@ -57,7 +59,6 @@ function Card({ product, productIsInCart, handleUpdateCart, handleRemoveFromCart
       
       {editing ? (
         <input
-          type="number"
           value={quantity}
           onChange={handleChangeQuantity}
         />
@@ -76,5 +77,9 @@ function Card({ product, productIsInCart, handleUpdateCart, handleRemoveFromCart
   )
 }
 
+function isPositiveInteger(input) {
+  return (!isNaN(parseInt(input)) && parseInt(input) > 0) 
+}
 
 export default Card;
+
