@@ -1,12 +1,85 @@
 .Card {
   width: 15em;
   padding: 1em;
-  border: solid red 1px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
 .image {
   width: 100%;
   height: 20em;
   object-fit: contain;
-  border: solid green 1px;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 0.2em 0;
+}
+
+.title {
+  padding: 0.2em 0;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+  border: solid var(--color-contrast);
+  border-radius: 2em;
+  width: min-content;
+}
+
+.button {
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+}
+
+.decrementButton {
+  composes: button;
+  background-image: url("../../assets/minus.svg");
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border: none;
+}
+
+.incrementButton {
+  composes: button;
+  background-image: url("../../assets/plus.svg");
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border: none;
+}
+
+.removeButton {
+  composes: button;
+  background-image: url("../../assets/delete.svg");
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border: none;
+  margin: 0 0 0.2em 0.5em;
+}
+
+.inputContainer {
+  display: inline;
+  width: 3em;
+  text-align: center;
+}
+
+.inputNotEditing {
+  /* min-width: 3em; */
+  display: inline;
+}
+
+.inputEditing {
+  font-family: var(--font1);
+  font-size: 1.125rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  max-width: 3em;
 }

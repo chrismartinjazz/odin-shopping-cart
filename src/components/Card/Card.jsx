@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./Card.module.css";
 import PropTypes from "prop-types";
+import convertToCurrency from "../../convert-to-currency.js";
 
 Card.propTypes = {
   product: PropTypes.shape({
@@ -14,15 +15,23 @@ Card.propTypes = {
   handleRemoveFromCart: PropTypes.func,
 };
 
-function Card({ product, productIsInCart, handleUpdateCart, handleRemoveFromCart }) {
+function Card({
+  product,
+  productIsInCart,
+  handleUpdateCart,
+  handleRemoveFromCart,
+}) {
   const [editing, setEditing] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
+  const formattedPrice = convertToCurrency(product.price, "USD");
+
   function handleChangeQuantity(event) {
-    if (isPositiveInteger(event.target.value)) {
-      const nextQuantity = event.target.value > 1
-        ? event.target.value
-        : 1
+    if (isPositiveIntegerOrBlank(event.target.value)) {
+      const nextQuantity =
+        event.target.value > 1 || event.target.value == ""
+          ? event.target.value
+          : 1;
       setQuantity(nextQuantity);
     }
   }
@@ -37,49 +46,62 @@ function Card({ product, productIsInCart, handleUpdateCart, handleRemoveFromCart
   }
 
   function handleClickIncrement() {
-    const nextQuantity = quantity > 0
-      ? Math.floor(parseInt(quantity) + 1)
-      : 1;
+    const nextQuantity = quantity > 0 ? Math.floor(parseInt(quantity) + 1) : 1;
     setQuantity(nextQuantity);
   }
 
   function handleClickDecrement() {
-    const nextQuantity = quantity > 1
-      ? Math.floor(parseInt(quantity) - 1)
-      : 1
+    const nextQuantity = quantity > 1 ? Math.floor(parseInt(quantity) - 1) : 1;
     setQuantity(nextQuantity);
   }
 
   return (
     <div className={styles.Card}>
       <img src={product.image} className={styles.image} />
-      <div className={styles.price}>{product.price}</div>
       <div className={styles.title}>{product.title}</div>
-      <button onClick={() => handleClickDecrement()}>-</button>
-      
-      {editing ? (
-        <input
-          value={quantity}
-          onChange={handleChangeQuantity}
-        />
-      ) : (
-        <div onClick={handleToggleEdit}>{quantity}</div>
-      )}
 
-      <button onClick={() => handleClickIncrement()}>+</button>
+      <div className={styles.buttonContainer}>
+        <button
+          className={styles.decrementButton}
+          onClick={() => handleClickDecrement()}
+        />
+
+        <div className={styles.inputContainer}>
+          {editing ? (
+            <input
+              className={styles.inputEditing}
+              value={quantity}
+              onChange={handleChangeQuantity}
+            />
+          ) : (
+            <div className={styles.inputNotEditing} onClick={handleToggleEdit}>
+              {quantity}
+            </div>
+          )}
+        </div>
+
+        <button
+          className={styles.incrementButton}
+          onClick={() => handleClickIncrement()}
+        />
+        {productIsInCart && (
+          <button
+            className={styles.removeButton}
+            onClick={() => handleRemoveFromCart(product.id)}
+          />
+        )}
+      </div>
+
       <button onClick={() => handleAddToCart(product, quantity)}>
         {productIsInCart ? "Update Cart" : "Add to Cart"}
       </button>
-      {productIsInCart &&
-        <button onClick={() => handleRemoveFromCart(product.id)}>Remove</button>
-      }
+      <div className={styles.price}>{formattedPrice}</div>
     </div>
-  )
+  );
 }
 
-function isPositiveInteger(input) {
-  return (!isNaN(parseInt(input)) && parseInt(input) > 0) 
+function isPositiveIntegerOrBlank(input) {
+  return (!isNaN(parseInt(input)) && parseInt(input) > 0) || input === "";
 }
 
 export default Card;
-
