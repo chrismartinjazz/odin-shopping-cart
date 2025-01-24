@@ -1,0 +1,35 @@
+.Home {
+  width: 90%;
+  max-width: 1600px;
+  height: calc(100vh - 48px);
+  padding: 2em;
+  margin: 0 auto;
+  background-color: var(--color-light);
+}
+
+.title {
+  margin: 0;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.hero {
+  width: 100%;
+  margin: 2em 0;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.heroText {
+  width: 50%;
+  font-size: 2rem;
+  line-height: 3rem;
+  font-weight: 700;
+}
+
+.heroImage {
+  width: 50%;
+  background-color: red;
+  border-radius: 1em;
+}

@@ -1,4 +1,4 @@
-.container {
+.Shop {
   width: 90%;
   max-width: 1600px;
   margin: 0 auto;
@@ -6,12 +6,15 @@
   /* border: solid purple 1px; */
 }
 
-.Shop {
+.shopItems {
   background-color: white;
   max-width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  gap: 1em;
+  gap: 0.5em;
   padding: 1em;
+  height: calc(100vh - 48px);
+  overflow-y: auto;
+  overflow-x: hidden;
 }

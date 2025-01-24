@@ -60,41 +60,49 @@ function Card({
       <img src={product.image} className={styles.image} />
       <div className={styles.title}>{product.title}</div>
 
-      <div className={styles.buttonContainer}>
-        <button
-          className={styles.decrementButton}
-          onClick={() => handleClickDecrement()}
-        />
+      <div className={styles.buttonRow}>
+        <div className={styles.buttonContainer}>
+          <button
+            className={styles.decrementButton}
+            onClick={() => handleClickDecrement()}
+          />
 
-        <div className={styles.inputContainer}>
-          {editing ? (
-            <input
-              className={styles.inputEditing}
-              value={quantity}
-              onChange={handleChangeQuantity}
+          <div className={styles.inputContainer}>
+            {editing ? (
+              <input
+                className={styles.inputEditing}
+                value={quantity}
+                onChange={handleChangeQuantity}
+              />
+            ) : (
+              <div
+                className={styles.inputNotEditing}
+                onClick={handleToggleEdit}
+              >
+                {quantity}
+              </div>
+            )}
+          </div>
+
+          <button
+            className={styles.incrementButton}
+            onClick={() => handleClickIncrement()}
+          />
+          {productIsInCart && (
+            <button
+              className={styles.removeButton}
+              onClick={() => handleRemoveFromCart(product.id)}
             />
-          ) : (
-            <div className={styles.inputNotEditing} onClick={handleToggleEdit}>
-              {quantity}
-            </div>
           )}
         </div>
 
         <button
-          className={styles.incrementButton}
-          onClick={() => handleClickIncrement()}
-        />
-        {productIsInCart && (
-          <button
-            className={styles.removeButton}
-            onClick={() => handleRemoveFromCart(product.id)}
-          />
-        )}
+          className={styles.addToCartButton}
+          onClick={() => handleAddToCart(product, quantity)}
+        >
+          {productIsInCart ? "Update" : "Add to Cart"}
+        </button>
       </div>
-
-      <button onClick={() => handleAddToCart(product, quantity)}>
-        {productIsInCart ? "Update Cart" : "Add to Cart"}
-      </button>
       <div className={styles.price}>{formattedPrice}</div>
     </div>
   );

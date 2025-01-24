@@ -19,7 +19,7 @@ function Cart({ cart, handleRemoveFromCart }) {
 
   return (
     <div className={styles.Cart}>
-      <div>Total Cost: {totalCost}</div>
+      <div className={styles.grandTotal}>Total Cost: {totalCost}</div>
       <a className={styles.checkoutLink} href="#">
         Checkout Now
       </a>
@@ -31,11 +31,22 @@ function Cart({ cart, handleRemoveFromCart }) {
               src={cartItem.product.image}
               alt={cartItem.product.title}
             />
-            <div>{cartItem.product.price}</div>
-            <div>{cartItem.quantity}</div>
-            <button onClick={() => handleRemoveFromCart(cartItem.product.id)}>
-              Remove
-            </button>
+            <div className={styles.buttonRow}>
+              <button
+                className={styles.removeButton}
+                onClick={() => handleRemoveFromCart(cartItem.product.id)}
+              />
+              <div className={styles.quantity}>{cartItem.quantity}</div>
+              <div className={styles.price}>
+                {convertToCurrency(cartItem.product.price, "USD")}
+              </div>
+            </div>
+            <div className={styles.productTotal}>
+              {convertToCurrency(
+                cartItem.product.price * cartItem.quantity,
+                "USD"
+              )}
+            </div>
           </div>
         );
       })}
