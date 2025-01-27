@@ -4,9 +4,10 @@ import styles from "./Navbar.module.css";
 
 Navbar.propTypes = {
   cart: PropTypes.array,
+  toggleDisplayCart: PropTypes.func,
 };
 
-export default function Navbar({ cart = [] }) {
+export default function Navbar({ cart, toggleDisplayCart }) {
   const styleNavlinkPending = `${styles.Navlink} ${styles.pending}`;
   const styleNavlinkActive = `${styles.Navlink} ${styles.active}`;
   const shoppingCartSize = cart.length;
@@ -39,7 +40,7 @@ export default function Navbar({ cart = [] }) {
           Shop
         </NavLink>
       </div>
-      <div className={styles.cart}>
+      <div className={styles.cart} onClick={toggleDisplayCart}>
         <div className={styles.cartItemCount}>
           {shoppingCartSize > 0 && shoppingCartSize}
         </div>

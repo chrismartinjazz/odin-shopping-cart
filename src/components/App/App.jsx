@@ -11,6 +11,7 @@ export default function App() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState([]);
+  const [displayCart, setDisplayCart] = useState(true);
 
   function handleUpdateCart(product, quantity) {
     // Create a deep copy of the cart
@@ -28,18 +29,17 @@ export default function App() {
     setCart(nextCart);
   }
 
-  // TODO - check if can remove the .map call without breaking.
   function handleRemoveFromCart(id) {
-    const nextCart = cart
-      .map((item) => {
-        return { ...item };
-      })
-      .filter((item) => item.product.id !== id);
+    const nextCart = cart.filter((item) => item.product.id !== id);
     setCart(nextCart);
   }
 
   function isProductInCart(id) {
     return cart.some((item) => item.product.id === id);
+  }
+
+  function toggleDisplayCart() {
+    setDisplayCart(!displayCart);
   }
 
   useEffect(() => {
@@ -62,8 +62,16 @@ export default function App() {
     {
       path: "/",
       element: (
-        <Layout cart={cart}>
-          <Home />
+        <Layout
+          cart={cart}
+          displayCart={displayCart}
+          toggleDisplayCart={toggleDisplayCart}
+        >
+          <Home
+            displayCart={displayCart}
+            cart={cart}
+            handleRemoveFromCart={handleRemoveFromCart}
+          />
         </Layout>
       ),
       errorElement: <ErrorPage />,
@@ -71,8 +79,13 @@ export default function App() {
     {
       path: "/shop",
       element: (
-        <Layout cart={cart}>
+        <Layout
+          cart={cart}
+          displayCart={displayCart}
+          toggleDisplayCart={toggleDisplayCart}
+        >
           <Shop
+            displayCart={displayCart}
             products={products}
             cart={cart}
             handleUpdateCart={handleUpdateCart}

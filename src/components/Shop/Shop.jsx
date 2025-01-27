@@ -4,6 +4,7 @@ import Cart from "../Cart/Cart.jsx";
 import styles from "./Shop.module.css";
 
 Shop.propTypes = {
+  displayCart: PropTypes.bool,
   products: PropTypes.array,
   cart: PropTypes.array,
   handleUpdateCart: PropTypes.func,
@@ -12,6 +13,7 @@ Shop.propTypes = {
 };
 
 export default function Shop({
+  displayCart,
   products,
   cart,
   handleUpdateCart,
@@ -35,11 +37,13 @@ export default function Shop({
             );
           })}
         </div>
-        <Cart
-          className={styles.Cart}
-          cart={cart}
-          handleRemoveFromCart={handleRemoveFromCart}
-        />
+        {displayCart && (
+          <Cart
+            className={styles.Cart}
+            cart={cart}
+            handleRemoveFromCart={handleRemoveFromCart}
+          />
+        )}
       </div>
     </>
   );
