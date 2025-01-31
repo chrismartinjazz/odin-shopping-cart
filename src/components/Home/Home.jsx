@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import styles from "./Home.module.css";
 import imgLightning from "../../assets/lightning.jpg";
 import { Link } from "react-router-dom";
-import Cart from "../Cart/Cart.jsx";
 
 Home.propTypes = {
   displayCart: PropTypes.bool,
@@ -10,7 +9,7 @@ Home.propTypes = {
   handleRemoveFromCart: PropTypes.func,
 };
 
-export default function Home({ displayCart, cart, handleRemoveFromCart }) {
+export default function Home() {
   return (
     <>
       <div className={styles.Home} role={"region"} aria-label={"Home Page"}>
@@ -41,13 +40,6 @@ export default function Home({ displayCart, cart, handleRemoveFromCart }) {
             </div>
           </div>
         </div>
-        {displayCart && (
-          <Cart
-            className={styles.Cart}
-            cart={cart}
-            handleRemoveFromCart={handleRemoveFromCart}
-          />
-        )}
       </div>
     </>
   );

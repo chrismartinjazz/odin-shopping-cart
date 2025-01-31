@@ -1,12 +1,4 @@
 .Shop {
-  width: 90%;
-  max-width: 1600px;
-  margin: 0 auto;
-  display: flex;
-  /* border: solid purple 1px; */
-}
-
-.shopItems {
   background-color: white;
   max-width: 100%;
   display: flex;

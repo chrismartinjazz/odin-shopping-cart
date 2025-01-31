@@ -35,13 +35,16 @@ function Cart({ cart, handleRemoveFromCart }) {
               <button
                 className={styles.removeButton}
                 onClick={() => handleRemoveFromCart(cartItem.product.id)}
+                aria-label={"Remove Item"}
               />
-              <div className={styles.quantity}>{cartItem.quantity}</div>
-              <div className={styles.price}>
+              <div className={styles.quantity} aria-label={"Quantity"}>
+                {cartItem.quantity}
+              </div>
+              <div className={styles.price} aria-label={"Price"}>
                 {convertToCurrency(cartItem.product.price, "USD")}
               </div>
             </div>
-            <div className={styles.productTotal}>
+            <div className={styles.productTotal} aria-label="Product Total">
               {convertToCurrency(
                 cartItem.product.price * cartItem.quantity,
                 "USD"

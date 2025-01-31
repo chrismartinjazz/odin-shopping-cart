@@ -61,7 +61,7 @@ $XXX.XX
 ...etc
 ```
 
-So I think I will do this as a grid with Navbar, Shop and Cart, where Cart only shows if it has items in it.
+So I think I will do this as a grid with Navbar, Shop and Cart, where Cart ~~only shows if it has items in it~~ can be toggled to display or hide by the user.
 
 ```txt
 +---------------------------------------------------+-------+
@@ -110,11 +110,6 @@ Example data...
 - DONE Shop item `<Card />`
 - DONE Add `cart` to state
 - `<Cart />` sidebar shows list of products in Cart
-- Basic home page on `<App />`
-- Layout using Grid or Flexbox
-- Styling
-- Deploy
-
-## Issues
-
-- Having the Shop component load data means each time user navigates from Home to Shop, has to re-query the API. Would prefer to have the data load on first visit to home page, cache it, and then display shop immediately?
+- DONE Basic home page on `<App />`
+- DONE Layout using ~~Grid~~ or **Flexbox**
+- DONE Styling

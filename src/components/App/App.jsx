@@ -67,12 +67,9 @@ export default function App() {
           cart={cart}
           displayCart={displayCart}
           toggleDisplayCart={toggleDisplayCart}
+          handleRemoveFromCart={handleRemoveFromCart}
         >
-          <Home
-            displayCart={displayCart}
-            cart={cart}
-            handleRemoveFromCart={handleRemoveFromCart}
-          />
+          <Home />
         </Layout>
       ),
       errorElement: <ErrorPage />,
@@ -84,9 +81,9 @@ export default function App() {
           cart={cart}
           displayCart={displayCart}
           toggleDisplayCart={toggleDisplayCart}
+          handleRemoveFromCart={handleRemoveFromCart}
         >
           <Shop
-            displayCart={displayCart}
             products={products}
             cart={cart}
             handleUpdateCart={handleUpdateCart}
