@@ -22,7 +22,7 @@ export default function Shop({
 }) {
   return (
     <>
-      <div className={styles.Shop}>
+      <div className={styles.Shop} role={"region"} aria-label={"Shop"}>
         <div className={styles.shopItems}>
           {products.map((product) => {
             return (
@@ -32,6 +32,12 @@ export default function Shop({
                   productIsInCart={isProductInCart(product.id)}
                   handleUpdateCart={handleUpdateCart}
                   handleRemoveFromCart={handleRemoveFromCart}
+                  initialQuantity={
+                    cart.find((item) => item.product.id === product.id)
+                      ? cart.find((item) => item.product.id === product.id)
+                          .quantity
+                      : 1
+                  }
                 />
               </div>
             );

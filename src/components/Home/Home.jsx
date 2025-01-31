@@ -13,7 +13,7 @@ Home.propTypes = {
 export default function Home({ displayCart, cart, handleRemoveFromCart }) {
   return (
     <>
-      <div className={styles.Home}>
+      <div className={styles.Home} role={"region"} aria-label={"Home Page"}>
         <div className={styles.main}>
           <div className={styles.hero}>
             <div className={styles.heroText}>
@@ -26,7 +26,7 @@ export default function Home({ displayCart, cart, handleRemoveFromCart }) {
                 Shop Now
               </Link>
             </div>
-            <div className="">
+            <div>
               <img className={styles.heroImage} src={imgLightning} />
               <p className={styles.attributions}>
                 Photo by{" "}

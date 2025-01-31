@@ -18,7 +18,7 @@ function Cart({ cart, handleRemoveFromCart }) {
   );
 
   return (
-    <div className={styles.Cart}>
+    <div className={styles.Cart} role={"region"} aria-label={"Cart"}>
       <div className={styles.grandTotal}>Total Cost: {totalCost}</div>
       <a className={styles.checkoutLink} href="#">
         Checkout Now

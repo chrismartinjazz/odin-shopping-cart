@@ -10,6 +10,7 @@ Card.propTypes = {
     price: PropTypes.number,
     title: PropTypes.string,
   }),
+  initialQuantity: PropTypes.number,
   productIsInCart: PropTypes.bool,
   handleUpdateCart: PropTypes.func,
   handleRemoveFromCart: PropTypes.func,
@@ -17,12 +18,12 @@ Card.propTypes = {
 
 function Card({
   product,
+  initialQuantity = 1,
   productIsInCart,
   handleUpdateCart,
   handleRemoveFromCart,
 }) {
-  const [editing, setEditing] = useState(false);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(initialQuantity);
 
   const formattedPrice = convertToCurrency(product.price, "USD");
 
@@ -36,13 +37,8 @@ function Card({
     }
   }
 
-  function handleToggleEdit() {
-    setEditing(!editing);
-  }
-
   function handleAddToCart(product, quantity) {
     handleUpdateCart(product, quantity);
-    setEditing(false);
   }
 
   function handleClickIncrement() {
@@ -57,7 +53,7 @@ function Card({
 
   return (
     <div className={styles.Card}>
-      <img src={product.image} className={styles.image} />
+      <img src={product.image} alt={product.title} className={styles.image} />
       <div className={styles.title}>{product.title}</div>
 
       <div className={styles.buttonRow}>
@@ -65,33 +61,28 @@ function Card({
           <button
             className={styles.decrementButton}
             onClick={() => handleClickDecrement()}
+            aria-label={"Decrease Quantity"}
           />
 
           <div className={styles.inputContainer}>
-            {editing ? (
-              <input
-                className={styles.inputEditing}
-                value={quantity}
-                onChange={handleChangeQuantity}
-              />
-            ) : (
-              <div
-                className={styles.inputNotEditing}
-                onClick={handleToggleEdit}
-              >
-                {quantity}
-              </div>
-            )}
+            <input
+              className={styles.inputEditing}
+              value={quantity}
+              onChange={handleChangeQuantity}
+              aria-label={"Quantity Input"}
+            />
           </div>
 
           <button
             className={styles.incrementButton}
             onClick={() => handleClickIncrement()}
+            aria-label={"Increase Quantity"}
           />
           {productIsInCart && (
             <button
               className={styles.removeButton}
               onClick={() => handleRemoveFromCart(product.id)}
+              aria-label={"Remove From Cart"}
             />
           )}
         </div>
@@ -103,7 +94,9 @@ function Card({
           {productIsInCart ? "Update" : "Add to Cart"}
         </button>
       </div>
-      <div className={styles.price}>{formattedPrice}</div>
+      <div className={styles.price} aria-label={"Price"}>
+        {formattedPrice}
+      </div>
     </div>
   );
 }

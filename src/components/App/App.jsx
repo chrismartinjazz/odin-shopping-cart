@@ -27,6 +27,7 @@ export default function App() {
       ? (existingItem.quantity = quantity)
       : nextCart.push({ product, quantity });
     setCart(nextCart);
+    console.log(nextCart);
   }
 
   function handleRemoveFromCart(id) {

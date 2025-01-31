@@ -13,7 +13,7 @@ export default function Navbar({ cart, toggleDisplayCart }) {
   const shoppingCartSize = cart.length;
 
   return (
-    <div className={styles.Navbar}>
+    <div className={styles.Navbar} role={"region"} aria-label={"Navbar"}>
       <div className={styles.links}>
         <NavLink
           to="/"
